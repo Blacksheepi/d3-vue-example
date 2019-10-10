@@ -6,6 +6,7 @@
 
 <script>
 import * as d3 from 'd3';
+import tooltip from 'd3-tip';
 import csvData from '../data/aster_data.csv';
 export default {
   name: 'HelloWorld',
@@ -16,7 +17,6 @@ export default {
     return {};
   },
   mounted() {
-    console.log(csvData, '2222');
     this.draw();
   },
   methods: {
@@ -48,13 +48,12 @@ export default {
         .pie()
         .sort(null)
         .value(d => d.width);
-      // var tip = d3
-      //   .tip()
-      //   .attr("class", "d3-tip")
-      //   .offset([0, 0])
-      //   .html(function(d) {
-      //     return d.data.label + ": <span style='color:orangered'>" + d.data.score + "</span>";
-      //   });
+      var tip = tooltip()
+        .attr('class', 'd3-tip')
+        .offset([0, 0])
+        .html(function(d) {
+          return `${d.data.label}: <span style='color:orangered'>${d.data.score}</span>`;
+        });
       var arc = d3
         .arc()
         .innerRadius(innerRadius)
@@ -72,7 +71,7 @@ export default {
         .attr('height', height)
         .append('g')
         .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
-      //svg.call(tip);
+      svg.call(tip);
 
       var path = svg
         .selectAll('.solidArc')
@@ -84,9 +83,9 @@ export default {
         })
         .attr('class', 'solidArc')
         .attr('stroke', 'gray')
-        .attr('d', arc);
-      // .on("mouseover", tip.show)
-      // .on("mouseout", tip.hide);
+        .attr('d', arc)
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
 
       var outerPath = svg
         .selectAll('.outlineArc')
