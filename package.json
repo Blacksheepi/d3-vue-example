@@ -30,7 +30,7 @@
     "json-loader": "^0.5.7",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "papaparse": "^5.1.0",
+    "papaparse": "^5.2.0",
     "vue-template-compiler": "^2.6.10"
   }
 }
