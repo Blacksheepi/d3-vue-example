@@ -14,11 +14,14 @@ export default {
     msg: String,
   },
   data() {
-    return {};
+    return {
+      test: '',
+    };
   },
   mounted() {
     this.draw();
   },
+
   methods: {
     draw() {
       const width = 500;
@@ -27,6 +30,7 @@ export default {
       const innerRadius = 0.3 * radius;
 
       let formatData = [];
+      console.log(csvData);
       csvData.forEach((item, index) => {
         if (index === 0) {
           return;

@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <router-link to="/rose">南丁格尔玫瑰图</router-link>
+    <router-link to="/selected-pie">选中状态的饼图</router-link>
+    <router-link to="/tidy-tree">tidy tree</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld,
-  },
+  components: {},
 };
 </script>

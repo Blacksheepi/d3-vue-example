@@ -5,11 +5,26 @@ import Home from './views/Home.vue';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'home',
       component: Home,
+      children: [
+        {
+          path: 'rose',
+          component: () => import('./components/Rose.vue'),
+        },
+        {
+          path: 'selected-pie',
+          component: () => import('./components/selectedPie.vue'),
+        },
+        {
+          path: 'tidy-tree',
+          component: () => import('./components/tidyTree.vue'),
+        },
+      ],
     },
     // {
     //   path: '/about',
